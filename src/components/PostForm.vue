@@ -31,10 +31,10 @@ async function makePost() {
   <div class="card mb-3">
     <div class="card-body">
       <form @submit.prevent="makePost()" class="rounded row py-3">
-        <div class="col-4 text-center">
+        <div class="col-4 text-center d-none d-lg-block">
           <img class="account-img" :src="accountProp?.picture" alt="You">
         </div>
-        <div class="col-8">
+        <div class="col-md-8 col-12">
           <div class="form-floating">
             <textarea v-model="editablePostData.body" class="form-control bg-page" placeholder="What's on your mind..."
               id="body" style="height: 25vh;" maxlength="5000" required>
@@ -64,5 +64,11 @@ async function makePost() {
   aspect-ratio: 1/1;
   border-radius: 50%;
   object-fit: cover;
+}
+
+@media screen and (max-width: 575.98px) {
+  .account-img {
+    height: 10vh;
+  }
 }
 </style>

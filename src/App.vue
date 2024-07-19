@@ -39,13 +39,13 @@ async function getPaidGraphics() {
   <main>
     <div class="container-fluid">
       <div class="row justify-content-center">
-        <div class="col-lg-3 col-md-2">
-
+        <div class="col-lg-3 col-md-2 d-none d-lg-block">
+          bananas
         </div>
         <div class="col-lg-6 col-md-8 col-12 mx-auto">
           <router-view />
         </div>
-        <div class="col-lg-3 col-md-3 d-lg-flex d-md-flex flex-column align-items-center d-none">
+        <div class="col-lg-3 col-md-3 d-md-flex flex-column align-items-center d-none">
           <div v-for="paidGraphic in paidGraphics" :key="paidGraphic.title">
             <PaidGraphicCard :paidGraphicProp="paidGraphic" />
           </div>
