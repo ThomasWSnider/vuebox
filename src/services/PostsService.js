@@ -10,7 +10,20 @@ class PostsService {
     const posts = response.data.posts.map((postPOJO) => new Post(postPOJO))
     AppState.posts = posts
   }
+  async makePost(editablePostData) {
+    const response = await api.post(`api/posts`, editablePostData)
+    logger.log(`New post!!`, response.data)
+    const newPost = new Post(response.data)
+    AppState.posts.push(newPost)
+  }
 
+  async deletePost(postId) {
+    const response = await api.delete(`api/posts/${postId}`)
+    logger.log(response.data)
+    const postIndex = AppState.posts.findIndex((post) => postId == post.id)
+    AppState.posts.splice(postIndex, 1)
+  }
 }
+
 
 export const postsService = new PostsService

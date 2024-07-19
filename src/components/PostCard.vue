@@ -1,20 +1,39 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { Post } from "../models/Post";
+import { Account } from "../models/Account";
+import Pop from "../utils/Pop";
+import { postsService } from "../services/PostsService";
 
-const props = defineProps({ postProp: { type: Post, required: true } })
+defineProps(
+  {
+    postProp: { type: Post, required: true },
+    accountProp: Account
+  }
+)
+
+async function deletePost(postId) {
+  try {
+    Pop.confirm(`Are you sure you want to delete this post?`, `It will be gone forever`, `BURN IT`, `Maybe not...`)
+    await postsService.deletePost(postId)
+  } catch (error) {
+    Pop.error(error);
+  }
+}
 </script>
 
 
 <template>
   <div class="card text-start mb-3 shadow">
     <div class="card-body">
-      <div class="d-flex align-items-center pb-3">
+      <div class="d-flex justify-content-between align-items-center pb-3">
         <RouterLink :to="{ name: 'Profile', params: { profileId: postProp.creatorId } }">
-          <img class="profile-img me-5 selectable" :src="postProp.creator.picture" :alt="postProp.creator.name"
+          <img class="profile-img selectable" :src="postProp.creator.picture" :alt="postProp.creator.name"
             :title="postProp.creator.name">
         </RouterLink>
         <h4 class="card-title">{{ postProp.creator.name }}</h4>
+        <button v-if="postProp.creatorId == accountProp?.id" @click="deletePost(postProp.id)"
+          class="btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
       </div>
       <p class="card-text">{{ postProp.body }}</p>
     </div>
