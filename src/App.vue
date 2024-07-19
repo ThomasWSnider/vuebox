@@ -42,7 +42,7 @@ async function getPaidGraphics() {
         <div class="col-lg-3 col-md-2">
 
         </div>
-        <div class="col-lg-6 col-md-8 col-10 mx-auto">
+        <div class="col-lg-6 col-md-8 col-12 mx-auto">
           <router-view />
         </div>
         <div class="col-lg-3 col-md-3 d-lg-flex d-md-flex flex-column align-items-center d-none">

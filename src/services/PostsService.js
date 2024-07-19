@@ -14,7 +14,7 @@ class PostsService {
     const response = await api.post(`api/posts`, editablePostData)
     logger.log(`New post!!`, response.data)
     const newPost = new Post(response.data)
-    AppState.posts.push(newPost)
+    AppState.posts.unshift(newPost)
   }
 
   async deletePost(postId) {

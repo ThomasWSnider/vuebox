@@ -33,7 +33,7 @@ async function deletePost(postId) {
         </RouterLink>
         <h4 class="card-title">{{ postProp.creator.name }}</h4>
         <button v-if="postProp.creatorId == accountProp?.id" @click="deletePost(postProp.id)"
-          class="btn btn-outline-danger"><i class="mdi mdi-delete"></i></button>
+          class="btn btn-outline-danger" title="Delete Post"><i class="mdi mdi-delete"></i></button>
       </div>
       <p class="card-text">{{ postProp.body }}</p>
     </div>
@@ -41,7 +41,8 @@ async function deletePost(postId) {
       :title="`${postProp.creator.name}'s Image`" class="post-image" />
     <div class="card-body card-text text-end">
       <!-- TODO add like/dislike function -->
-      <button class="btn btn-outline-primary"><i class="mdi mdi-thumb-up"></i> {{ postProp.likeIds.length
+      <button class="btn btn-outline-primary" title="Like this Post"><i class="mdi mdi-thumb-up"></i> {{
+        postProp.likeIds.length
         }}</button>
     </div>
   </div>

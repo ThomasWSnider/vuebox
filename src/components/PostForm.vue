@@ -37,7 +37,7 @@ async function makePost() {
         <div class="col-8">
           <div class="form-floating">
             <textarea v-model="editablePostData.body" class="form-control bg-page" placeholder="What's on your mind..."
-              id="body" style="height: 25vh;">
+              id="body" style="height: 25vh;" maxlength="5000" required>
             </textarea>
             <label for="body">Make a Post</label>
           </div>
@@ -45,7 +45,7 @@ async function makePost() {
         <div class="col-12 mt-1">
           <div class="form-floating mb-3 bg-page">
             <input v-model="editablePostData.imgUrl" type="url" class="form-control" id="imgUrl"
-              placeholder="Leave an Image...">
+              placeholder="Leave an Image..." maxlength="500">
             <label for="imgUrl">Image URL</label>
           </div>
         </div>
