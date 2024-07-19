@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from "vue-router";
 import { Post } from "../models/Post";
 
 const props = defineProps({ postProp: { type: Post, required: true } })
@@ -9,8 +10,10 @@ const props = defineProps({ postProp: { type: Post, required: true } })
   <div class="card text-start mb-3 shadow">
     <div class="card-body">
       <div class="d-flex align-items-center pb-3">
-        <img class="profile-img me-5" :src="postProp.creator.picture" :alt="postProp.creator.name"
-          :title="postProp.creator.name">
+        <RouterLink :to="{ name: 'Profile', params: { profileId: postProp.creatorId } }">
+          <img class="profile-img me-5 selectable" :src="postProp.creator.picture" :alt="postProp.creator.name"
+            :title="postProp.creator.name">
+        </RouterLink>
         <h4 class="card-title">{{ postProp.creator.name }}</h4>
       </div>
       <p class="card-text">{{ postProp.body }}</p>
