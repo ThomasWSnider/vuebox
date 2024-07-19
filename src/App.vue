@@ -10,11 +10,14 @@ import Navbar from './components/Navbar.vue'
     <Navbar />
   </header>
   <main>
-    <router-view />
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-10 col-12">
+          <router-view />
+        </div>
+      </div>
+    </div>
   </main>
-  <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
 </template>
 
 <style lang="scss">

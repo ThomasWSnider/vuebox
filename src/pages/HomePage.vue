@@ -21,11 +21,9 @@ async function getPosts() {
 </script>
 
 <template>
-  <div class="container">
-    <div class="row">
-      <div v-for="post in posts" :key="post.id" class="col-12">
-        <PostCard :postProp="post" />
-      </div>
+  <div class="row mt-3">
+    <div v-for="post in posts" :key="post.id" class="col-12">
+      <PostCard :postProp="post" />
     </div>
   </div>
 </template>
