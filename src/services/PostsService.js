@@ -6,17 +6,16 @@ import { api } from "./AxiosService"
 class PostsService {
   async getPosts() {
     const response = await api.get(`api/posts`)
-    logger.log(`Got the Posts!`, response.data)
     const posts = response.data.posts.map((postPOJO) => new Post(postPOJO))
     AppState.posts = posts
   }
   async getPostsByProfileId(profileId) {
-    const response = await api.get(`api/posts?creatorid=${profileId}`)
-    logger.log(response.data)
+    const response = await api.get(`api/posts?creatorId=${profileId}`)
+    const profilePosts = response.data.posts.map((post) => new Post(post))
+    AppState.posts = profilePosts
   }
   async makePost(editablePostData) {
     const response = await api.post(`api/posts`, editablePostData)
-    logger.log(`New post!!`, response.data)
     const newPost = new Post(response.data)
     AppState.posts.unshift(newPost)
   }
