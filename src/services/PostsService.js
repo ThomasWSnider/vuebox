@@ -10,6 +10,10 @@ class PostsService {
     const posts = response.data.posts.map((postPOJO) => new Post(postPOJO))
     AppState.posts = posts
   }
+  async getPostsByProfileId(profileId) {
+    const response = await api.get(`api/posts?creatorid=${profileId}`)
+    logger.log(response.data)
+  }
   async makePost(editablePostData) {
     const response = await api.post(`api/posts`, editablePostData)
     logger.log(`New post!!`, response.data)
