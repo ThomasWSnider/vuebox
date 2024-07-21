@@ -42,9 +42,9 @@ async function deletePost(postId) {
     </div>
     <img v-if="postProp.imgUrl" :src="postProp.imgUrl" :alt="`${postProp.creator.name}'s Image`"
       :title="`${postProp.creator.name}'s Image`" class="post-image" />
-    <div class="card-body card-text text-end">
+    <div class="card-body card-text text-end pb-0">
       <!-- TODO add like/dislike function -->
-      <button :disabled="accountProp == null" class="btn btn-outline-primary" title="Like this Post"><i
+      <button :disabled="!accountProp" class="btn btn-outline-primary" title="Like this Post"><i
           class="mdi mdi-thumb-up"></i>
         {{
           postProp.likeIds.length

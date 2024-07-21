@@ -5,11 +5,13 @@ import { api } from "./AxiosService"
 
 class PostsService {
   async getPosts() {
+    AppState.posts = []
     const response = await api.get(`api/posts`)
     const posts = response.data.posts.map((postPOJO) => new Post(postPOJO))
     AppState.posts = posts
   }
   async getPostsByProfileId(profileId) {
+    AppState.posts = []
     const response = await api.get(`api/posts?creatorId=${profileId}`)
     const profilePosts = response.data.posts.map((post) => new Post(post))
     AppState.posts = profilePosts
