@@ -28,7 +28,7 @@ async function makePost() {
 
 
 <template>
-  <div v-if="accountProp" class="card mb-3 shadow">
+  <div class="card mb-3 shadow">
     <div class="card-body">
       <form @submit.prevent="makePost()" class="rounded row">
         <div class="col-12">
@@ -46,8 +46,9 @@ async function makePost() {
             <label for="imgUrl">Image URL</label>
           </div>
         </div>
-        <div class="text-end">
-          <button type="submit" class="btn btn-outline-primary">Post</button>
+        <div class="d-flex justify-content-end">
+          <button type="button" class="btn me-5" data-bs-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-outline-primary" data-bs-dismiss="modal">Submit</button>
         </div>
       </form>
     </div>

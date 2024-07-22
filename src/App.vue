@@ -42,7 +42,7 @@ async function getPaidGraphics() {
               <p class="card-title fw-bold opacity-50">{{ account.class }}</p>
               <p class="card-title fs-6 fw-bold">{{ account.name }}</p>
               <div class="row justify-content-center">
-                <div class="col-12 d-flex justify-content-between">
+                <div class="col-12 d-flex justify-content-around">
                   <a :href="account.linkedin" :title="account.linkedin" class="card-link fs-4"><i
                       class="mdi mdi-linkedin"></i></a>
                   <a :href="account.github" :title="account.github" class="card-link fs-4"><i
@@ -51,8 +51,10 @@ async function getPaidGraphics() {
                       class="mdi mdi-text-box"></i></a>
                 </div>
                 <div class="col-12">
-                  <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#postFormModal">Make
-                    New Post</button>
+                  <div class="d-grid">
+                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#postFormModal">Make
+                      New Post</button>
+                  </div>
                 </div>
               </div>
             </div>

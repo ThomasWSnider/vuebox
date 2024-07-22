@@ -71,4 +71,8 @@ nav {
   background: #42B883;
   background: radial-gradient(at left top, #42B883, #354A5E);
 }
+
+i {
+  margin-right: -7px;
+}
 </style>

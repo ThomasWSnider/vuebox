@@ -1,10 +1,8 @@
 <script setup>
-import { Account } from "../models/Account";
 import { Profile } from "../models/Profile";
 
 defineProps({
   profile: Profile,
-  account: Account
 })
 </script>
 
