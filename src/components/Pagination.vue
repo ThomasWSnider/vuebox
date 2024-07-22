@@ -36,16 +36,26 @@ async function changeProfilePage(pageNumber, routeId) {
   <div>
     <button :disabled="currentPage <= 1"
       @click="isProfile ? changeProfilePage(currentPage - 1, route.params.profileId) : changePage(currentPage - 1)"
-      class="btn btn-primary">
+      class="btn btn-primary d-none d-md-block">
       Previous
+    </button>
+    <button :disabled="currentPage <= 1"
+      @click="isProfile ? changeProfilePage(currentPage - 1, route.params.profileId) : changePage(currentPage - 1)"
+      class="btn btn-primary d-block d-md-none">
+      <i class="mdi mdi-arrow-left-thin"></i>
     </button>
   </div>
   <p>{{ `Showing page ${currentPage} of ${totalPages}` }}</p>
   <div>
     <button :disabled="currentPage >= totalPages"
       @click="isProfile ? changeProfilePage(currentPage + 1, route.params.profileId) : changePage(currentPage + 1)"
-      class="btn btn-primary">
+      class="btn btn-primary d-none d-md-block">
       Next
+    </button>
+    <button :disabled="currentPage >= totalPages"
+      @click="isProfile ? changeProfilePage(currentPage + 1, route.params.profileId) : changePage(currentPage + 1)"
+      class="btn btn-primary d-block d-md-none">
+      <i class="mdi mdi-arrow-right-thin"></i>
     </button>
   </div>
 </template>

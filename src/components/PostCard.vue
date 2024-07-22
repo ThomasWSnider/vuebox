@@ -42,7 +42,7 @@ async function likePost(postId) {
           </RouterLink>
           <i v-if="postProp.creator.graduated" class="mdi mdi-account-school graduated-icon px-2 pt-1 fs-6"></i>
         </div>
-        <h4 class="card-title mx-auto">{{ postProp.creator.name }}</h4>
+        <p class="card-title mx-auto fs-4">{{ postProp.creator.name }}</p>
         <button v-if="postProp.creatorId == accountProp?.id" @click="deletePost(postProp.id)"
           class="btn btn-outline-danger" title="Delete Post"><i class="mdi mdi-delete"></i></button>
       </div>

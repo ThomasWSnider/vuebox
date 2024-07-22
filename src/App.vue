@@ -7,13 +7,17 @@ import { paidGraphicsService } from "./services/PaidGraphicsService";
 import PaidGraphicCard from "./components/PaidGraphicCard.vue";
 import FormModal from "./components/FormModal.vue";
 import PostForm from "./components/PostForm.vue";
+import AccountCard from "./components/AccountCard.vue";
 
+const identity = computed(() => AppState.identity)
 const account = computed(() => AppState.account)
 const paidGraphics = computed(() => AppState.paidGraphics)
 
 onMounted(() => {
   getPaidGraphics()
 })
+
+
 
 async function getPaidGraphics() {
   try {
@@ -29,36 +33,8 @@ async function getPaidGraphics() {
     <div class="container-fluid">
       <div class="row justify-content-end">
 
-        <div class="col-lg-3 col-md-2 d-none d-lg-block px-0 position-fixed top-0 start-0">
-          <div v-if="account" class="card text-center">
-            <img :src="account.coverImg" alt="Title" />
-            <div class="card-body">
-              <div class="position-relative profile-image-wrapper">
-                <RouterLink :to="{ name: 'Account' }">
-                  <img class="account-sidebar-img" :src="account.picture" :alt="account.name" />
-                </RouterLink>
-                <i v-if="account.graduated" class="mdi mdi-account-school graduated-icon px-2 fs-2"></i>
-              </div>
-              <p class="card-title fw-bold opacity-50">{{ account.class }}</p>
-              <p class="card-title fs-6 fw-bold">{{ account.name }}</p>
-              <div class="row justify-content-center">
-                <div class="col-12 d-flex justify-content-around">
-                  <a :href="account.linkedin" :title="account.linkedin" class="card-link fs-4"><i
-                      class="mdi mdi-linkedin"></i></a>
-                  <a :href="account.github" :title="account.github" class="card-link fs-4"><i
-                      class="mdi mdi-github"></i></a>
-                  <a :href="account.resume" :title="account.resume" class="card-link fs-4"><i
-                      class="mdi mdi-text-box"></i></a>
-                </div>
-                <div class="col-12">
-                  <div class="d-grid">
-                    <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#postFormModal">Make
-                      New Post</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div v-if="account" class="col-lg-3 d-none d-lg-block px-0 position-fixed top-0 start-0">
+          <AccountCard :account="account" :identity="identity" />
         </div>
 
 
