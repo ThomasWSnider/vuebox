@@ -17,7 +17,7 @@ async function logout() {
 
 <template>
   <div class="card text-center px-0 shadow">
-    <img class="card-img-top" :src="account.coverImg" alt="Title" />
+    <img class="card-img-top" :src="account.coverImg" :alt="`${account.name}'s Cover Image'`" />
     <div class="card-body">
       <div class="position-relative profile-image-wrapper">
 
