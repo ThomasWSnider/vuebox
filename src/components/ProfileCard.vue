@@ -17,7 +17,7 @@ defineProps({
         <img class="account-img ms-3" :src="profile.picture" :alt="profile.name" />
         <i v-if="profile.graduated" class="mdi mdi-account-school graduated-icon px-2 fs-2"></i>
       </div>
-      <div class="col-6 text-end pe-3">
+      <div class="col-6 text-end pe-3 text-dark">
         <a :href="profile.linkedin" :title="profile.linkedin" class="card-link fs-4"><i
             class="mdi mdi-linkedin"></i></a>
         <a :href="profile.github" :title="profile.github" class="card-link fs-4"><i class="mdi mdi-github"></i></a>
@@ -61,10 +61,5 @@ defineProps({
   border: 2px solid black;
   aspect-ratio: 1/1;
   border-radius: 50%;
-}
-
-a {
-  text-decoration: none;
-  color: black;
 }
 </style>

@@ -14,7 +14,7 @@ defineProps(
 
 async function deletePost(postId) {
   try {
-    Pop.confirm(`Are you sure you want to delete this post?`, `It will be gone forever`, `BURN IT`, `Maybe not...`)
+    await Pop.confirm(`Are you sure you want to delete this post?`, `It will be gone forever`, `BURN IT`, `Maybe not...`)
     await postsService.deletePost(postId)
   } catch (error) {
     Pop.error(error);
