@@ -5,6 +5,7 @@ import Navbar from './components/Navbar.vue'
 import Pop from "./utils/Pop";
 import { paidGraphicsService } from "./services/PaidGraphicsService";
 import PaidGraphicCard from "./components/PaidGraphicCard.vue";
+import ProfileForm from "./components/ProfileForm.vue";
 
 const account = computed(() => AppState.account)
 const paidGraphics = computed(() => AppState.paidGraphics)
@@ -53,6 +54,20 @@ async function getPaidGraphics() {
       </div>
     </div>
   </main>
+
+  <div class="modal fade" id="accountFormModal" tabindex="-1" aria-labelledby="accountFormModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="accountFormModalLabel">Edit Account Info</h1>
+        </div>
+        <div class="modal-body">
+          <ProfileForm :account="account" />
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss">

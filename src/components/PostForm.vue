@@ -32,7 +32,9 @@ async function makePost() {
     <div class="card-body">
       <form @submit.prevent="makePost()" class="rounded row py-3">
         <div class="col-4 text-center d-none d-lg-block">
-          <img class="account-img" :src="accountProp?.picture" alt="You">
+          <RouterLink :to="{ name: 'Profile', params: { profileId: accountProp.id } }">
+            <img class="account-img" :src="accountProp?.picture" alt="You">
+          </RouterLink>
         </div>
         <div class="col-lg-8 col-12">
           <div class="form-floating">

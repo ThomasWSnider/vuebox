@@ -8,6 +8,7 @@ import { postsService } from "../services/PostsService";
 import PostCard from "../components/PostCard.vue";
 import ProfileCard from "../components/ProfileCard.vue";
 
+
 const profile = computed(() => AppState.profile)
 const posts = computed(() => AppState.posts)
 const account = computed(() => AppState.account)
@@ -24,7 +25,6 @@ watchEffect(() => {
   getProfileById(profileId)
   getPostsByProfileId(profileId)
 })
-
 
 
 async function getProfileById(profileId) {
@@ -49,7 +49,7 @@ async function getPostsByProfileId(profileId) {
 <template>
   <div v-if="profile" class="row mt-3">
     <div class="col-12 mb-3">
-      <ProfileCard :profile="profile" />
+      <ProfileCard :profile="profile" :account="account" />
     </div>
     <div v-for="post in posts" :key="post.id" class="col-12">
       <PostCard :postProp="post" :accountProp="account" />

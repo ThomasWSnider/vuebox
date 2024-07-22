@@ -1,14 +1,17 @@
 <script setup>
+import { Account } from "../models/Account";
 import { Profile } from "../models/Profile";
 
 defineProps({
-  profile: Profile
+  profile: Profile,
+  account: Account
 })
 </script>
 
 
 <template>
   <div class="card text-start shadow">
+    <!-- Profile Info -->
     <div class="row justify-content-between">
       <div class="col-12">
         <img class="card-img-top profile-cover-img" :src="profile.coverImg" :alt="`${profile.name}'s Cover Image`">
@@ -17,7 +20,7 @@ defineProps({
         <img class="account-img ms-3" :src="profile.picture" :alt="profile.name" />
         <i v-if="profile.graduated" class="mdi mdi-account-school graduated-icon px-2 fs-2"></i>
       </div>
-      <div class="col-6 text-end pe-5">
+      <div class="col-6 text-end pe-3">
         <a :href="profile.linkedin" :title="profile.linkedin" class="card-link fs-4"><i
             class="mdi mdi-linkedin"></i></a>
         <a :href="profile.github" :title="profile.github" class="card-link fs-4"><i class="mdi mdi-github"></i></a>
@@ -27,6 +30,12 @@ defineProps({
         <p class="card-text fs-6 px-3">{{ profile.class }}</p>
         <h4 class="card-title px-3">{{ profile.name }}</h4>
         <p class="card-text px-3">{{ profile.bio }}</p>
+        <div v-if="account?.id == profile.id" class="text-end pe-3">
+          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+            data-bs-target="#accountFormModal">
+            Edit Profile
+          </button>
+        </div>
       </div>
     </div>
   </div>
