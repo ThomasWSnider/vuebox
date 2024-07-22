@@ -30,11 +30,11 @@ async function makePost() {
 <template>
   <div v-if="accountProp" class="card mb-3 shadow">
     <div class="card-body">
-      <form @submit.prevent="makePost()" class="rounded row py-3">
+      <form @submit.prevent="makePost()" class="rounded row">
         <div class="col-12">
           <div class="form-floating">
-            <textarea v-model="editablePostData.body" class="form-control bg-page" placeholder="What's on your mind..."
-              id="body" style="height: 25vh;" maxlength="5000" required>
+            <textarea v-model="editablePostData.body" class="form-control bg-page mb-3"
+              placeholder="What's on your mind..." id="body" style="height: 25vh;" maxlength="5000" required>
             </textarea>
             <label for="body">Make a Post</label>
           </div>

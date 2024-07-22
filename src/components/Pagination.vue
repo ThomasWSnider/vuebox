@@ -9,7 +9,6 @@ defineProps({ isProfile: Boolean })
 
 const currentPage = computed(() => AppState.currentPage)
 const totalPages = computed(() => AppState.totalPages)
-const searchingFor = computed(() => AppState.searchingFor)
 const route = useRoute()
 
 

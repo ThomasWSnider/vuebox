@@ -2,7 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
-
+import SearchBar from "./SearchBar.vue";
 const theme = ref(loadState('theme') || 'light')
 
 onMounted(() => {
@@ -21,7 +21,7 @@ function toggleTheme() {
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+        <h1><i class="mdi mdi-vuejs"></i>ueBox</h1>
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -29,11 +29,9 @@ function toggleTheme() {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
+      <ul class="navbar-nav mx-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
+          <SearchBar />
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
@@ -67,5 +65,10 @@ a:hover {
   nav {
     height: 64px;
   }
+}
+
+nav {
+  background: #42B883;
+  background: radial-gradient(at left top, #42B883, #354A5E);
 }
 </style>

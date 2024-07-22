@@ -16,5 +16,5 @@ export const AppState = reactive({
   currentPage: 1,
   totalPages: Infinity,
 
-  searchingFor: null
+  searchQuery: null
 })
