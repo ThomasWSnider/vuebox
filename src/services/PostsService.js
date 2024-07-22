@@ -5,7 +5,7 @@ import { api } from "./AxiosService"
 
 class PostsService {
   async getPostsByAccountId() {
-    const accountId = await AppState.account.id
+    const accountId = AppState.account.id
     const response = await api.get(`api/posts?creatorId=${accountId}`)
     const profilePosts = response.data.posts.map((post) => new Post(post))
     AppState.posts = profilePosts

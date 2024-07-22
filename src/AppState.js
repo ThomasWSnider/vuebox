@@ -11,5 +11,10 @@ export const AppState = reactive({
   /** @type {import('./models/Post.js').Post[]} user info from the database*/
   posts: [],
   /** @type {import('./models/PaidGraphic.js').PaidGraphic[]} user info from the database*/
-  paidGraphics: []
+  paidGraphics: [],
+
+  currentPage: 1,
+  totalPages: Infinity,
+
+  searchingFor: null
 })

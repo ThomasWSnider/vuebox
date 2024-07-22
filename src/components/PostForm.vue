@@ -28,7 +28,7 @@ async function makePost() {
 
 
 <template>
-  <div v-if="accountProp" class="card mb-3">
+  <div v-if="accountProp" class="card mb-3 shadow">
     <div class="card-body">
       <form @submit.prevent="makePost()" class="rounded row py-3">
         <div class="col-4 text-center d-none d-lg-block">
