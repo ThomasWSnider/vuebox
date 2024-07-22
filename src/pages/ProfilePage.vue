@@ -7,6 +7,7 @@ import { AppState } from "../AppState";
 import { postsService } from "../services/PostsService";
 import PostCard from "../components/PostCard.vue";
 import ProfileCard from "../components/ProfileCard.vue";
+import Pagination from "../components/Pagination.vue";
 
 
 const profile = computed(() => AppState.profile)
@@ -55,6 +56,11 @@ async function getPostsByProfileId(profileId) {
       <PostCard :postProp="post" :accountProp="account" />
     </div>
   </div>
+  <footer class="container">
+    <div class="d-flex justify-content-around mb-3">
+      <Pagination :isProfile="true" />
+    </div>
+  </footer>
 </template>
 
 

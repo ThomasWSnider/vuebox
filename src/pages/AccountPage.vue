@@ -4,26 +4,15 @@ import { AppState } from '../AppState.js';
 import PostCard from "../components/PostCard.vue";
 import Pop from "../utils/Pop.js";
 import { postsService } from "../services/PostsService.js";
+import Pagination from "../components/Pagination.vue";
 
 const account = computed(() => AppState.account)
-const posts = computed(() => AppState.posts)
+
 
 onMounted(() => {
   window.scrollTo(0, 0)
 })
 
-watchEffect(() => {
-  getPostsByAccountId()
-})
-
-
-async function getPostsByAccountId() {
-  try {
-    await postsService.getPostsByAccountId()
-  } catch (error) {
-    Pop.error(error);
-  }
-}
 
 </script>
 
@@ -69,9 +58,6 @@ async function getPostsByAccountId() {
     <div v-else>
       <h1>Loading... <i class="mdi mdi-loading mdi-spin"></i></h1>
     </div>
-  </div>
-  <div v-for="post in posts" :key="post.id" class="col-12">
-    <PostCard :postProp="post" :accountProp="account" />
   </div>
 </template>
 

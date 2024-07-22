@@ -3,20 +3,29 @@ import { computed } from "vue";
 import { AppState } from "../AppState";
 import Pop from "../utils/Pop";
 import { postsService } from "../services/PostsService";
-import { logger } from "../utils/Logger";
+import { useRoute } from "vue-router";
 
+defineProps({ isProfile: Boolean })
 
 const currentPage = computed(() => AppState.currentPage)
 const totalPages = computed(() => AppState.totalPages)
 const searchingFor = computed(() => AppState.searchingFor)
-const posts = computed(() => AppState.posts)
+const route = useRoute()
 
-async function changePage(url) {
+
+async function changePage(pageNumber) {
   try {
-    logger.log(url)
-    await postsService.changePage(url)
+    await postsService.changePage(pageNumber)
   } catch (error) {
     Pop.error('Could not change page', error);
+  }
+}
+
+async function changeProfilePage(pageNumber, routeId) {
+  try {
+    await postsService.changeProfilePage(pageNumber, routeId)
+  } catch (error) {
+    Pop.error(error);
   }
 }
 </script>
@@ -24,13 +33,17 @@ async function changePage(url) {
 
 <template>
   <div>
-    <button :disabled="currentPage <= 1" @click="changePage(`api/posts?page=${currentPage - 1}`)"
+    <button :disabled="currentPage <= 1"
+      @click="isProfile ? changeProfilePage(currentPage - 1, route.params.profileId) : changePage(currentPage - 1)"
       class="btn btn-primary">
       Previous
     </button>
   </div>
+  <p>{{ `Showing page ${currentPage} of ${totalPages}` }}</p>
   <div>
-    <button @click="changePage(`api/posts?page=${currentPage + 1}`)" class="btn btn-primary">
+    <button :disabled="currentPage >= totalPages"
+      @click="isProfile ? changeProfilePage(currentPage + 1, route.params.profileId) : changePage(currentPage + 1)"
+      class="btn btn-primary">
       Next
     </button>
   </div>
@@ -39,6 +52,6 @@ async function changePage(url) {
 
 <style lang="scss" scoped>
 button {
-  width: 20vw;
+  width: 15vw;
 }
 </style>

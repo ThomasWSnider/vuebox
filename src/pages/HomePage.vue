@@ -34,7 +34,7 @@ async function getPosts() {
   </div>
   <footer class="container">
     <div class="d-flex justify-content-around mb-3">
-      <Pagination />
+      <Pagination :isProfile="false" />
     </div>
   </footer>
 </template>

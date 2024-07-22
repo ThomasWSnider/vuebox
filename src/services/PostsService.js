@@ -4,26 +4,33 @@ import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 class PostsService {
-  async getPostsByAccountId() {
-    const accountId = AppState.account.id
-    const response = await api.get(`api/posts?creatorId=${accountId}`)
-    const profilePosts = response.data.posts.map((post) => new Post(post))
-    AppState.posts = profilePosts
-  }
   async getPosts() {
     AppState.posts = []
     const response = await api.get(`api/posts`)
     const posts = response.data.posts.map((postPOJO) => new Post(postPOJO))
     AppState.posts = posts
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.totalPages
   }
   async getPostsByProfileId(profileId) {
     AppState.posts = []
     const response = await api.get(`api/posts?creatorId=${profileId}`)
     const profilePosts = response.data.posts.map((post) => new Post(post))
     AppState.posts = profilePosts
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.totalPages
   }
-  async changePage(url) {
-    const response = await api.get(url)
+  async changePage(pageNumber) {
+    const response = await api.get(`api/posts?page=${pageNumber}`)
+    logger.log(response.data)
+    const posts = response.data.posts.map((post) => new Post(post))
+    AppState.posts = posts
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.totalPages
+  }
+  async changeProfilePage(pageNumber, routeId) {
+    const response = await api.get(`api/posts?creatorId=${routeId}&page=${pageNumber}`)
+    logger.log(response.data)
     const posts = response.data.posts.map((post) => new Post(post))
     AppState.posts = posts
     AppState.currentPage = response.data.page
