@@ -1,10 +1,7 @@
 <script setup>
 import { computed, onMounted, watchEffect } from 'vue';
 import { AppState } from '../AppState.js';
-import PostCard from "../components/PostCard.vue";
-import Pop from "../utils/Pop.js";
-import { postsService } from "../services/PostsService.js";
-import Pagination from "../components/Pagination.vue";
+
 
 const account = computed(() => AppState.account)
 
@@ -79,20 +76,5 @@ onMounted(() => {
   height: 28vh;
   object-fit: cover;
   object-position: center;
-}
-
-.graduated-icon {
-  position: absolute;
-  bottom: 0;
-  right: .5em;
-  background-color: white;
-  border: 2px solid black;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-}
-
-a {
-  text-decoration: none;
-  color: black;
 }
 </style>

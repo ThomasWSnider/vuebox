@@ -31,12 +31,7 @@ async function makePost() {
   <div v-if="accountProp" class="card mb-3 shadow">
     <div class="card-body">
       <form @submit.prevent="makePost()" class="rounded row py-3">
-        <div class="col-4 text-center d-none d-lg-block">
-          <RouterLink :to="{ name: 'Profile', params: { profileId: accountProp.id } }">
-            <img class="account-img" :src="accountProp?.picture" alt="You">
-          </RouterLink>
-        </div>
-        <div class="col-lg-8 col-12">
+        <div class="col-12">
           <div class="form-floating">
             <textarea v-model="editablePostData.body" class="form-control bg-page" placeholder="What's on your mind..."
               id="body" style="height: 25vh;" maxlength="5000" required>

@@ -20,6 +20,14 @@ async function deletePost(postId) {
     Pop.error(error);
   }
 }
+
+async function likePost(postId) {
+  try {
+    await postsService.likePost(postId)
+  } catch (error) {
+    Pop.error('Could not like post', error);
+  }
+}
 </script>
 
 
@@ -42,13 +50,15 @@ async function deletePost(postId) {
     </div>
     <img v-if="postProp.imgUrl" :src="postProp.imgUrl" :alt="`${postProp.creator.name}'s Image`"
       :title="`${postProp.creator.name}'s Image`" class="post-image" />
-    <div class="card-body card-text text-end pb-0">
-      <!-- TODO add like/dislike function -->
-      <button :disabled="!accountProp" class="btn btn-outline-primary" title="Like this Post"><i
-          class="mdi mdi-thumb-up"></i>
-        {{
-          postProp.likeIds.length
-        }}</button>
+    <div class="card-body card-text d-flex justify-content-between pb-0">
+      <small>Posted on {{ postProp.createdAt.toLocaleDateString('en-US', {
+        day: `numeric`, month: `numeric`, year:
+          `numeric`, hour: `numeric`, minute: `numeric`
+      }) }}</small>
+      <button @click="likePost(postProp.id)" :disabled="!accountProp" class="btn btn-outline-primary"
+        title="Like this Post"><i class="mdi mdi-thumb-up"></i>
+        {{ postProp.likeIds.length }}
+      </button>
     </div>
   </div>
 
