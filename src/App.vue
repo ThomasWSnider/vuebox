@@ -55,6 +55,7 @@ async function getPaidGraphics() {
     </div>
   </main>
 
+
   <div class="modal fade" id="accountFormModal" tabindex="-1" aria-labelledby="accountFormModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
@@ -75,12 +76,5 @@ async function getPaidGraphics() {
 
 :root {
   --main-height: calc(100vh - 32px - 64px);
-}
-
-
-footer {
-  display: grid;
-  place-content: center;
-  height: 32px;
 }
 </style>

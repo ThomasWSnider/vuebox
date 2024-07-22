@@ -22,12 +22,18 @@ class PostsService {
     const profilePosts = response.data.posts.map((post) => new Post(post))
     AppState.posts = profilePosts
   }
+  async changePage(url) {
+    const response = await api.get(url)
+    const posts = response.data.posts.map((post) => new Post(post))
+    AppState.posts = posts
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.totalPages
+  }
   async makePost(editablePostData) {
     const response = await api.post(`api/posts`, editablePostData)
     const newPost = new Post(response.data)
     AppState.posts.unshift(newPost)
   }
-
   async deletePost(postId) {
     const response = await api.delete(`api/posts/${postId}`)
     logger.log(response.data)
