@@ -11,7 +11,6 @@ defineProps({
 
 <template>
   <div class="card text-start shadow">
-    <!-- Profile Info -->
     <div class="row justify-content-between">
       <div class="col-12">
         <img class="card-img-top profile-cover-img" :src="profile.coverImg" :alt="`${profile.name}'s Cover Image`">
@@ -30,12 +29,6 @@ defineProps({
         <p class="card-text fs-6 px-3">{{ profile.class }}</p>
         <h4 class="card-title px-3">{{ profile.name }}</h4>
         <p class="card-text px-3">{{ profile.bio }}</p>
-        <div v-if="account?.id == profile.id" class="text-end pe-3">
-          <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
-            data-bs-target="#accountFormModal">
-            Edit Profile
-          </button>
-        </div>
       </div>
     </div>
   </div>

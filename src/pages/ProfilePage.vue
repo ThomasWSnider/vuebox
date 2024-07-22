@@ -55,8 +55,6 @@ async function getPostsByProfileId(profileId) {
       <PostCard :postProp="post" :accountProp="account" />
     </div>
   </div>
-
-
 </template>
 
 

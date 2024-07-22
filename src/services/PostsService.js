@@ -4,6 +4,12 @@ import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 
 class PostsService {
+  async getPostsByAccountId() {
+    const accountId = await AppState.account.id
+    const response = await api.get(`api/posts?creatorId=${accountId}`)
+    const profilePosts = response.data.posts.map((post) => new Post(post))
+    AppState.posts = profilePosts
+  }
   async getPosts() {
     AppState.posts = []
     const response = await api.get(`api/posts`)

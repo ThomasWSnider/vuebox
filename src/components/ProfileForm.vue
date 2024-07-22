@@ -24,6 +24,7 @@ async function updateAccount() {
   try {
     await accountService.updateAccount(editableAccountData.value)
     Pop.success('Account successfully updated!')
+    window.scrollTo(0, 0)
   } catch (error) {
     Pop.error(error);
   }
