@@ -9,6 +9,7 @@ defineProps({ isProfile: Boolean })
 
 const currentPage = computed(() => AppState.currentPage)
 const totalPages = computed(() => AppState.totalPages)
+const searchQuery = computed(() => AppState.searchQuery)
 const route = useRoute()
 
 
@@ -19,6 +20,7 @@ async function changePage(pageNumber) {
     Pop.error('Could not change page', error);
   }
 }
+
 
 async function changeProfilePage(pageNumber, routeId) {
   try {

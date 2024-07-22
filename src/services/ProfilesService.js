@@ -17,8 +17,11 @@ class ProfilesService {
     AppState.posts = []
     const response = await api.get(`api/profiles?query=${searchTerm}`)
     const searchedProfiles = response.data.map((profile) => new Profile(profile))
+    AppState.searchQuery = searchTerm
+    logger.log(response.data)
     AppState.searchedProfiles = searchedProfiles
-    logger.log(AppState.searchedProfiles)
+    AppState.currentPage = response.data.page
+    AppState.totalPages = response.data.totalPages
   }
 }
 

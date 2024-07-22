@@ -54,6 +54,12 @@ class PostsService {
     AppState.posts.splice(postIndex, 1, newPost)
 
   }
+
+  async clearSearch() {
+    AppState.searchQuery = null
+    AppState.searchedProfiles = []
+    await this.getPosts()
+  }
 }
 
 

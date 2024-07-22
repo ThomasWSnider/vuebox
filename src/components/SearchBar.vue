@@ -12,10 +12,12 @@ const searchQuery = computed(() => AppState.searchQuery)
 async function searchProfiles() {
   try {
     await profilesService.searchProfiles(searchTerm.value)
+    searchTerm.value = ''
   } catch (error) {
     Pop.error(`Could not complete search`, error);
   }
 }
+
 </script>
 
 
