@@ -12,6 +12,8 @@ export const AppState = reactive({
   posts: [],
   /** @type {import('./models/PaidGraphic.js').PaidGraphic[]} user info from the database*/
   paidGraphics: [],
+  /** @type {import('./models/Profile.js').Profile[]} user info from the database*/
+  searchedProfiles: [],
 
   currentPage: 1,
   totalPages: Infinity,

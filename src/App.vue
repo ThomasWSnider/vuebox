@@ -5,7 +5,8 @@ import Navbar from './components/Navbar.vue'
 import Pop from "./utils/Pop";
 import { paidGraphicsService } from "./services/PaidGraphicsService";
 import PaidGraphicCard from "./components/PaidGraphicCard.vue";
-import ProfileForm from "./components/ProfileForm.vue";
+import FormModal from "./components/FormModal.vue";
+import PostForm from "./components/PostForm.vue";
 
 const account = computed(() => AppState.account)
 const paidGraphics = computed(() => AppState.paidGraphics)
@@ -27,6 +28,7 @@ async function getPaidGraphics() {
   <header>
     <div class="container-fluid">
       <div class="row justify-content-end">
+
         <div class="col-lg-3 col-md-2 d-none d-lg-block px-0 position-fixed top-0 start-0">
           <div v-if="account" class="card text-center">
             <img :src="account.coverImg" alt="Title" />
@@ -39,7 +41,7 @@ async function getPaidGraphics() {
               </div>
               <p class="card-title fw-bold opacity-50">{{ account.class }}</p>
               <p class="card-title fs-6 fw-bold">{{ account.name }}</p>
-              <div class="row">
+              <div class="row justify-content-center">
                 <div class="col-12 d-flex justify-content-between">
                   <a :href="account.linkedin" :title="account.linkedin" class="card-link fs-4"><i
                       class="mdi mdi-linkedin"></i></a>
@@ -48,10 +50,16 @@ async function getPaidGraphics() {
                   <a :href="account.resume" :title="account.resume" class="card-link fs-4"><i
                       class="mdi mdi-text-box"></i></a>
                 </div>
+                <div class="col-12">
+                  <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#postFormModal">Make
+                    New Post</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+
         <div v-if="account" class="col-lg-9 col-12 px-0">
           <Navbar />
         </div>
@@ -79,19 +87,14 @@ async function getPaidGraphics() {
   </main>
 
 
-  <div class="modal fade" id="accountFormModal" tabindex="-1" aria-labelledby="accountFormModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="accountFormModalLabel">Edit Account Info</h1>
-        </div>
-        <div class="modal-body">
-          <ProfileForm :account="account" />
-        </div>
-      </div>
-    </div>
-  </div>
+  <FormModal modalId="postFormModal">
+    <template #modalHeader>
+      Make New Post
+    </template>
+    <template #modalBody>
+      <PostForm />
+    </template>
+  </FormModal>
 </template>
 
 <style lang="scss">

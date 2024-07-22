@@ -1,6 +1,8 @@
 <script setup>
-import { computed, onMounted, watchEffect } from 'vue';
+import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
+import FormModal from "../components/FormModal.vue";
+import ProfileForm from "../components/ProfileForm.vue";
 
 
 const account = computed(() => AppState.account)
@@ -56,6 +58,15 @@ onMounted(() => {
       <h1>Loading... <i class="mdi mdi-loading mdi-spin"></i></h1>
     </div>
   </div>
+
+  <FormModal modalId="accountFormModal">
+    <template #modalHeader>
+      Edit Account Information
+    </template>
+    <template #modalBody>
+      <ProfileForm />
+    </template>
+  </FormModal>
 </template>
 
 <style scoped lang="scss">

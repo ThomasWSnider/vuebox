@@ -25,9 +25,6 @@ async function getPosts() {
 
 <template>
   <div class="row mt-3">
-    <div class="col-12">
-      <PostForm :accountProp="account" />
-    </div>
     <div v-for="post in posts" :key="post.id" class="col-12">
       <PostCard :postProp="post" :accountProp="account" />
     </div>
